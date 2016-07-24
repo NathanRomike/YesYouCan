@@ -1,4 +1,4 @@
-package comnathanromike.httpsgithub.yes_you_can.models;
+package com.nathanromike.yes_you_can.models;
 
 import java.util.ArrayList;
 

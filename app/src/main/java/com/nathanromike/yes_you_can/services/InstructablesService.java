@@ -1,4 +1,4 @@
-package comnathanromike.httpsgithub.yes_you_can.services;
+package com.nathanromike.yes_you_can.services;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

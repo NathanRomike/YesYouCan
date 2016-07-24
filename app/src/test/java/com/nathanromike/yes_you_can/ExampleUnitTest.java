@@ -1,4 +1,4 @@
-package comnathanromike.httpsgithub.yes_you_can;
+package com.nathanromike.yes_you_can;
 
 import org.junit.Test;
 
