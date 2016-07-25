@@ -57,7 +57,7 @@ public class CategoryActivity extends AppCompatActivity {
                             mRecyclerView.setAdapter(mAdapter);
                             RecyclerView.LayoutManager layoutManager = new GridLayoutManager(CategoryActivity.this, 2);
                             mRecyclerView.setLayoutManager(layoutManager);
-//                            mRecyclerView.setHasFixedSize(true);
+                            mRecyclerView.setHasFixedSize(true);
                         }
                     });
                 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.nathanromike.yes_you_can.R;
 import com.nathanromike.yes_you_can.models.Guide;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -57,6 +58,9 @@ public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.Guid
         }
 
         public void bindGuide(Guide guide) {
+            Picasso.with(mContext)
+                    .load(guide.getCoverImg())
+                    .into(mCoverImageView);
             mTitleTextView.setText(guide.getTitle());
             mSummaryTextView.setText(guide.getSummary());
             mDifficultyTextView.setText("Difficulty: " + guide.getDifficulty());
