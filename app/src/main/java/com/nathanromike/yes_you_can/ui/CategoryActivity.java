@@ -2,12 +2,14 @@ package com.nathanromike.yes_you_can.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.nathanromike.yes_you_can.Constants;
 import com.nathanromike.yes_you_can.R;
-import com.nathanromike.yes_you_can.Services.iFixItService;
+import com.nathanromike.yes_you_can.adapters.GuideListAdapter;
+import com.nathanromike.yes_you_can.services.iFixItService;
 import com.nathanromike.yes_you_can.models.Guide;
 
 import java.io.IOException;
@@ -22,7 +24,8 @@ import okhttp3.Response;
 public class CategoryActivity extends AppCompatActivity {
     public static final String TAG = CategoryActivity.class.getSimpleName();
 
-    @BindView(R.id.listView) ListView mListView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    private GuideListAdapter mAdapter;
 
     public ArrayList<Guide> mGuides = new ArrayList<>();
 
@@ -50,13 +53,11 @@ public class CategoryActivity extends AppCompatActivity {
                     CategoryActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            String[] titles = new String[mGuides.size()];
-                            for (int i = 0; i < titles.length; i++) {
-                                titles[i] = mGuides.get(i).getTitle();
-                            }
-
-                            ArrayAdapter adapter = new ArrayAdapter(CategoryActivity.this, android.R.layout.simple_list_item_1, titles);
-                            mListView.setAdapter(adapter);
+                            mAdapter = new GuideListAdapter(getApplicationContext(), mGuides);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(CategoryActivity.this, 2);
+                            mRecyclerView.setLayoutManager(layoutManager);
+//                            mRecyclerView.setHasFixedSize(true);
                         }
                     });
                 }

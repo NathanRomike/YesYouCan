@@ -1,6 +1,4 @@
-package com.nathanromike.yes_you_can.Services;
-
-import android.util.Log;
+package com.nathanromike.yes_you_can.services;
 
 import com.nathanromike.yes_you_can.Constants;
 import com.nathanromike.yes_you_can.models.Guide;
