@@ -1,5 +1,8 @@
 package com.nathanromike.yes_you_can.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Guide {
     private double mGuideId;
     private String mUrl;
@@ -8,6 +11,8 @@ public class Guide {
     private String mDifficulty;
     private double mDuration;
     private String mCoverImg;
+
+    public Guide() {}
 
     public Guide(double guideId, String url, String title, String summary, String difficulty, double duration, String coverImg) {
         this.mGuideId = guideId;

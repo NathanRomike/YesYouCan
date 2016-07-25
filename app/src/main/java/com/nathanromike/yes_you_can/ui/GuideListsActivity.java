@@ -3,7 +3,6 @@ package com.nathanromike.yes_you_can.ui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.nathanromike.yes_you_can.Constants;
@@ -21,8 +20,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class CategoryActivity extends AppCompatActivity {
-    public static final String TAG = CategoryActivity.class.getSimpleName();
+public class GuideListsActivity extends AppCompatActivity {
+    public static final String TAG = GuideListsActivity.class.getSimpleName();
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private GuideListAdapter mAdapter;
@@ -50,12 +49,12 @@ public class CategoryActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     mGuides = fixItService.processResults(response);
 
-                    CategoryActivity.this.runOnUiThread(new Runnable() {
+                    GuideListsActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mAdapter = new GuideListAdapter(getApplicationContext(), mGuides);
                             mRecyclerView.setAdapter(mAdapter);
-                            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(CategoryActivity.this, 2);
+                            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(GuideListsActivity.this, 2);
                             mRecyclerView.setLayoutManager(layoutManager);
                             mRecyclerView.setHasFixedSize(true);
                         }

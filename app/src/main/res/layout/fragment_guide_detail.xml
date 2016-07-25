@@ -1,0 +1,40 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nathanromike.yes_you_can.ui.GuideDetailFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="I'm the title of this guide!"
+            android:textSize="30sp"
+            />
+
+        <ImageView
+            android:id="@+id/coverImageView"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:src="@drawable/robologo"
+            android:layout_below="@+id/titleTextView"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/summaryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/coverImageView"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:text="I'm the summary of this guide!"
+            />
+
+    </RelativeLayout>
+
+</FrameLayout>

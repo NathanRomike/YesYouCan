@@ -10,24 +10,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
-        
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        </activity>
-        
-        <activity
-            android:name=".ui.CategoryActivity" />
-        
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+        <activity android:name=".ui.GuideListsActivity" />
+        <activity android:name=".ui.GuideDetailActivity"></activity>
     </application>
 
 </manifest>
