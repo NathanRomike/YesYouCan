@@ -9,6 +9,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:transitionName="coverImage"
         android:id="@+id/coverImageView"
         android:src="@drawable/robologo"
         android:scaleType="center"

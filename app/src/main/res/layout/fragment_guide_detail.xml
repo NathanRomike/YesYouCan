@@ -19,6 +19,7 @@
 
         <ImageView
             android:id="@+id/coverImageView"
+            android:transitionName="coverImage"
             android:layout_width="400dp"
             android:layout_height="400dp"
             android:src="@drawable/robologo"
@@ -34,6 +35,14 @@
             android:textAlignment="center"
             android:text="I'm the summary of this guide!"
             />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:id="@+id/listView"
+            android:layout_below="@+id/summaryTextView"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

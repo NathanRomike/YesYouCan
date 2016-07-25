@@ -38,7 +38,7 @@ public class GuideListsActivity extends AppCompatActivity {
 
     private void getGuides(String category) {
         final iFixItService fixItService = new iFixItService();
-        fixItService.findGuides(category, new Callback() {
+        fixItService.findGuides(category, Constants.NO_DETAIL_TAG, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -47,7 +47,7 @@ public class GuideListsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    mGuides = fixItService.processResults(response);
+                    mGuides = fixItService.processGuideResults(response);
 
                     GuideListsActivity.this.runOnUiThread(new Runnable() {
                         @Override

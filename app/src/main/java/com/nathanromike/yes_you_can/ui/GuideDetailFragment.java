@@ -6,28 +6,40 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nathanromike.yes_you_can.Constants;
 import com.nathanromike.yes_you_can.R;
 import com.nathanromike.yes_you_can.models.Guide;
+import com.nathanromike.yes_you_can.models.Instruction;
+import com.nathanromike.yes_you_can.services.iFixItService;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class GuideDetailFragment extends Fragment {
     @BindView(R.id.titleTextView) TextView mTitleTextView;
     @BindView(R.id.coverImageView) ImageView mCoverImageView;
     @BindView(R.id.summaryTextView) TextView mSummaryTextView;
+    @BindView(R.id.listView) ListView mListView;
 
     public GuideDetailFragment() {
         // Required empty public constructor
     }
 
     private Guide mGuide;
+    private Instruction mInstruction;
 
     public static GuideDetailFragment newInstance(Guide guide) {
         GuideDetailFragment guideDetailFragment = new GuideDetailFragment();
@@ -41,6 +53,7 @@ public class GuideDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mGuide = Parcels.unwrap(getArguments().getParcelable("guide"));
+        makeAPICallForDetails();
     }
 
     @Override
@@ -54,6 +67,31 @@ public class GuideDetailFragment extends Fragment {
         mSummaryTextView.setText(mGuide.getSummary());
 
         return view;
+    }
+
+    public void makeAPICallForDetails() {
+        String guideId = mGuide.getGuideId();
+        final iFixItService fixItService = new iFixItService();
+        fixItService.findGuides(Constants.NO_CATEGORY_TAG, guideId, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                mInstruction = fixItService.processInstructionResults(response);
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, mInstruction.getSteps());
+                        mListView.setAdapter(adapter);
+                    }
+                });
+
+            }
+        });
     }
 
 }

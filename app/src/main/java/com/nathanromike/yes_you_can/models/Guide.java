@@ -4,7 +4,7 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Guide {
-    private double mGuideId;
+    private String mGuideId;
     private String mUrl;
     private String mTitle;
     private String mSummary;
@@ -14,7 +14,7 @@ public class Guide {
 
     public Guide() {}
 
-    public Guide(double guideId, String url, String title, String summary, String difficulty, double duration, String coverImg) {
+    public Guide(String guideId, String url, String title, String summary, String difficulty, double duration, String coverImg) {
         this.mGuideId = guideId;
         this.mUrl = url;
         this.mTitle = title;
@@ -24,7 +24,7 @@ public class Guide {
         this.mCoverImg = coverImg;
     }
 
-    public double getGuideId() {
+    public String getGuideId() {
         return mGuideId;
     }
 
