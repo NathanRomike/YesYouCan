@@ -34,6 +34,7 @@ public class GuideListsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         viewPager.setAdapter(new GuideListPagerAdapter(getSupportFragmentManager(), GuideListsActivity.this));
+        viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
     }
 }

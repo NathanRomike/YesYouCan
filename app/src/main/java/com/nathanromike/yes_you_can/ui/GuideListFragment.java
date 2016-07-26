@@ -2,6 +2,7 @@ package com.nathanromike.yes_you_can.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,7 +27,8 @@ import okhttp3.Response;
 
 public class GuideListFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
-    private int mPage;
+    public int mPage;
+    public String mCategory;
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private GuideListAdapter mAdapter;
@@ -47,7 +49,7 @@ public class GuideListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
-        getGuides(Constants.ELECTRONIC);
+        getGuides(mPage);
     }
 
     @Override
@@ -57,9 +59,24 @@ public class GuideListFragment extends Fragment {
         return view;
     }
 
-    private void getGuides(String category) {
+    private void getGuides(int currentPage) {
+        switch (currentPage) {
+            case 1:
+                mCategory = Constants.ELECTRONIC;
+                break;
+            case 2:
+                mCategory = Constants.SEWING;
+                break;
+            case 3:
+                mCategory = Constants.SOFTWARE;
+                break;
+            case 4:
+                mCategory = Constants.SOLDERING;
+                break;
+        }
+
         final iFixItService fixItService = new iFixItService();
-        fixItService.findGuides(category, Constants.NO_DETAIL_TAG, new Callback() {
+        fixItService.findGuides(mCategory, Constants.NO_DETAIL_TAG, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -73,10 +90,10 @@ public class GuideListFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-                            mRecyclerView.setLayoutManager(layoutManager);
                             mAdapter = new GuideListAdapter(getContext(), mGuides);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                             mRecyclerView.setAdapter(mAdapter);
+                            mRecyclerView.setLayoutManager(layoutManager);
                         }
                     });
                 }
