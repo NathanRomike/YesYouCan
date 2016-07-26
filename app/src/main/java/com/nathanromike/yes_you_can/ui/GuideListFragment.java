@@ -73,11 +73,10 @@ public class GuideListFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mAdapter = new GuideListAdapter(getContext(), mGuides);
-                            mRecyclerView.setAdapter(mAdapter);
                             RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
                             mRecyclerView.setLayoutManager(layoutManager);
-                            Toast.makeText(getContext(), mGuides.get(0).getDifficulty(), Toast.LENGTH_SHORT).show();
+                            mAdapter = new GuideListAdapter(getContext(), mGuides);
+                            mRecyclerView.setAdapter(mAdapter);
                         }
                     });
                 }

@@ -21,9 +21,11 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
-        <activity android:name=".ui.GuideListsActivity" />
-        <activity android:name=".ui.GuideDetailActivity"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".ui.GuideListsActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+        <activity android:name=".ui.GuideDetailActivity"/>
     </application>
 
 </manifest>
