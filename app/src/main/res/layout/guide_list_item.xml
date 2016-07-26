@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_centerHorizontal="true"
-    android:background="@android:color/darker_gray"
+    android:background="@android:color/transparent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:paddingLeft="15dp"
@@ -16,54 +15,52 @@
         android:elevation="1dp">
 
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:transitionName="coverImage"
-            android:paddingTop="15dp"
             android:id="@+id/coverImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:transitionName="coverImage"
             android:src="@drawable/robologo"
             android:scaleType="centerCrop"
-            android:layout_centerHorizontal="true"/>
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_below="@+id/coverImageView"
-            android:gravity="center">
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_toRightOf="@+id/coverImageView">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:text="This is where the guide's title goes!"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/summaryTextView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="5dp"
                 android:text="This is where a short summary goes! It's not too long!"
                 android:textAlignment="center"
-                android:maxLines="2"
-                android:id="@+id/summaryTextView"/>
+                android:maxLines="2"/>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/difficultyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="Difficulty"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Difficulty"
-                    android:textAlignment="center"
-                    android:id="@+id/difficultyTextView"
-                    android:textColor="@color/colorAccent"/>
-
-            </RelativeLayout>
         </LinearLayout>
+
     </RelativeLayout>
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.nathanromike.yes_you_can.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.Guid
 
     @Override
     public void onBindViewHolder(GuideViewHolder holder, int position) {
+        ViewCompat.setTransitionName(holder.mCoverImageView, "imageTransition" + position);
         holder.bindGuide(mGuides.get(position));
     }
 
@@ -67,7 +69,7 @@ public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.Guid
                     .load(guide.getCoverImg())
                     .into(mCoverImageView);
             mTitleTextView.setText(guide.getTitle());
-            mDifficultyTextView.setText("Difficulty: " + guide.getDifficulty());
+            mDifficultyTextView.setText(guide.getDifficulty());
             mSummaryTextView.setText(guide.getSummary());
         }
 

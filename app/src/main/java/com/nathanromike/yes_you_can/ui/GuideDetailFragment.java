@@ -63,6 +63,7 @@ public class GuideDetailFragment extends Fragment {
                 .load(mGuide.getCoverImg())
                 .into(mCoverImageView);
 
+        getActivity().startPostponedEnterTransition();
         return view;
     }
 
