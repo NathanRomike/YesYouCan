@@ -9,7 +9,7 @@ import com.nathanromike.yes_you_can.ui.GuideListFragment;
 
 public class GuideListPagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 4;
-    private String tabTitles[] = new String[] {"Electronic", "Sewing", "Software", "Soldering"};
+    private String tabTitles[] = new String[] {"Electronics", "Sewing", "Software", "Soldering"};
     private Context mContext;
 
     public GuideListPagerAdapter(FragmentManager fm, Context context) {

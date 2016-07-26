@@ -67,8 +67,8 @@ public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.Guid
                     .load(guide.getCoverImg())
                     .into(mCoverImageView);
             mTitleTextView.setText(guide.getTitle());
-            mSummaryTextView.setText(guide.getSummary());
             mDifficultyTextView.setText("Difficulty: " + guide.getDifficulty());
+            mSummaryTextView.setText(guide.getSummary());
         }
 
         @Override

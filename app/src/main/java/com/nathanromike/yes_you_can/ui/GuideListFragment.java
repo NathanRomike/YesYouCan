@@ -3,11 +3,11 @@ package com.nathanromike.yes_you_can.ui;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.nathanromike.yes_you_can.Constants;
 import com.nathanromike.yes_you_can.R;
@@ -73,7 +73,7 @@ public class GuideListFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                             mRecyclerView.setLayoutManager(layoutManager);
                             mAdapter = new GuideListAdapter(getContext(), mGuides);
                             mRecyclerView.setAdapter(mAdapter);
