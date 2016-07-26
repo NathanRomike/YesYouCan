@@ -31,12 +31,10 @@ import okhttp3.Response;
 public class GuideDetailFragment extends Fragment {
     @BindView(R.id.titleTextView) TextView mTitleTextView;
     @BindView(R.id.coverImageView) ImageView mCoverImageView;
-    @BindView(R.id.summaryTextView) TextView mSummaryTextView;
+    @BindView(R.id.introTextView) TextView mIntroTextView;
     @BindView(R.id.listView) ListView mListView;
 
-    public GuideDetailFragment() {
-        // Required empty public constructor
-    }
+    public GuideDetailFragment() {}
 
     private Guide mGuide;
     private Instruction mInstruction;
@@ -64,7 +62,6 @@ public class GuideDetailFragment extends Fragment {
         Picasso.with(view.getContext())
                 .load(mGuide.getCoverImg())
                 .into(mCoverImageView);
-        mSummaryTextView.setText(mGuide.getSummary());
 
         return view;
     }
@@ -85,6 +82,8 @@ public class GuideDetailFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        mIntroTextView.setText(mInstruction.getIntroduction());
+
                         ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, mInstruction.getSteps());
                         mListView.setAdapter(adapter);
                     }

@@ -1,5 +1,7 @@
 package com.nathanromike.yes_you_can.ui;
 
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import com.nathanromike.yes_you_can.Constants;
 import com.nathanromike.yes_you_can.R;
 import com.nathanromike.yes_you_can.adapters.GuideListAdapter;
+import com.nathanromike.yes_you_can.adapters.GuideListPagerAdapter;
 import com.nathanromike.yes_you_can.services.iFixItService;
 import com.nathanromike.yes_you_can.models.Guide;
 
@@ -21,46 +24,16 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class GuideListsActivity extends AppCompatActivity {
-    public static final String TAG = GuideListsActivity.class.getSimpleName();
-
-    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    private GuideListAdapter mAdapter;
-
-    public ArrayList<Guide> mGuides = new ArrayList<>();
+    @BindView(R.id.listViewpager) ViewPager viewPager;
+    @BindView(R.id.sliding_tabs) TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_guide_list);
         ButterKnife.bind(this);
-        getGuides(Constants.ELECTRONIC);
-    }
 
-    private void getGuides(String category) {
-        final iFixItService fixItService = new iFixItService();
-        fixItService.findGuides(category, Constants.NO_DETAIL_TAG, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    mGuides = fixItService.processGuideResults(response);
-
-                    GuideListsActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mAdapter = new GuideListAdapter(getApplicationContext(), mGuides);
-                            mRecyclerView.setAdapter(mAdapter);
-                            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(GuideListsActivity.this, 2);
-                            mRecyclerView.setLayoutManager(layoutManager);
-                            mRecyclerView.setHasFixedSize(true);
-                        }
-                    });
-                }
-            }
-        });
+        viewPager.setAdapter(new GuideListPagerAdapter(getSupportFragmentManager(), GuideListsActivity.this));
+        tabLayout.setupWithViewPager(viewPager);
     }
 }

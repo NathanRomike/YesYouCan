@@ -26,8 +26,8 @@ public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.Guid
     private Context mContext;
 
     public GuideListAdapter(Context context, ArrayList<Guide> guides) {
-        mContext = context;
-        mGuides = guides;
+        this.mContext = context;
+        this.mGuides = guides;
     }
 
     @Override
