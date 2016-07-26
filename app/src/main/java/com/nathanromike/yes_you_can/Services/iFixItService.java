@@ -21,7 +21,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class iFixItService {
-    public static void findGuides(String category, String guideId, Callback callback) {
+    public void findGuides(String category, String guideId, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.IFIXIT_BASE_URL).newBuilder();

@@ -47,13 +47,13 @@ public class GuideListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
-        getGuides(mPage);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_guide_list, container, false);
         ButterKnife.bind(this, view);
+        getGuides(mPage);
         return view;
     }
 
@@ -88,10 +88,11 @@ public class GuideListFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mAdapter = new GuideListAdapter(getContext(), mGuides);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                            mAdapter = new GuideListAdapter(getActivity(), mGuides);
                             mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                             mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
                         }
                     });
                 }

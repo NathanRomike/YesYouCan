@@ -1,8 +1,10 @@
 package com.nathanromike.yes_you_can.adapters;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.view.ViewCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,23 +26,21 @@ import butterknife.ButterKnife;
 
 public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.GuideViewHolder> {
     private ArrayList<Guide> mGuides = new ArrayList<>();
-    private Context mContext;
+    private Activity mActivity;
 
-    public GuideListAdapter(Context context, ArrayList<Guide> guides) {
-        this.mContext = context;
+    public GuideListAdapter(Activity activity, ArrayList<Guide> guides) {
+        this.mActivity = activity;
         this.mGuides = guides;
     }
 
     @Override
     public GuideViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.guide_list_item, parent, false);
-        GuideViewHolder viewHolder = new GuideViewHolder(view);
-        return viewHolder;
+        return new GuideViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(GuideViewHolder holder, int position) {
-        ViewCompat.setTransitionName(holder.mCoverImageView, "imageTransition" + position);
         holder.bindGuide(mGuides.get(position));
     }
 
@@ -73,13 +73,17 @@ public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.Guid
             mSummaryTextView.setText(guide.getSummary());
         }
 
+
+
         @Override
         public void onClick(View view) {
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, GuideDetailActivity.class);
             intent.putExtra("position", itemPosition);
             intent.putExtra("guides", Parcels.wrap(mGuides));
-            mContext.startActivity(intent);
+
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(mActivity, mCoverImageView, "coverImage");
+            mContext.startActivity(intent, options.toBundle());
         }
     }
 }

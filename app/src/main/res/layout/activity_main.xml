@@ -3,50 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.MainActivity"
     android:background="@android:color/black"
     >
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/wearables"
-        android:scaleType="centerCrop"
-        android:id="@+id/backgroundImageView"
-        android:alpha=".9"/>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:id="@+id/topPanel">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/wearables"
+            android:scaleType="centerCrop"
+            android:id="@+id/backgroundImageView"
+            android:alpha=".9"
+            android:layout_alignParentBottom="true" />
 
         <TextView
+            android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Can You Fix It?"
-            android:id="@+id/titleTextView"
-            android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/abc_text_size_display_1_material"
-            android:layout_alignParentTop="true"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="@dimen/abc_text_size_display_2_material"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="307dp" />
+            android:textStyle="normal" />
 
         <Button
-            android:layout_width="400dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
             android:text="Yes You Can!"
-            android:textColor="@android:color/black"
-            android:textSize="25sp"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/abc_text_size_display_1_material"
+            android:fontFamily="sans-serif-condensed"
             android:id="@+id/button"
-            android:elevation="1dp"
             android:background="@drawable/button_border"
-            android:backgroundTint="@android:color/darker_gray"
+            android:paddingBottom="6dp"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

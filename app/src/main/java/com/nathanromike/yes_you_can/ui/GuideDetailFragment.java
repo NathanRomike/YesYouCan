@@ -85,7 +85,7 @@ public class GuideDetailFragment extends Fragment {
                     public void run() {
                         mIntroTextView.setText(mInstruction.getIntroduction());
 
-                        ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, mInstruction.getSteps());
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, mInstruction.getSteps());
                         mListView.setAdapter(adapter);
                     }
                 });

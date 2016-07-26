@@ -6,9 +6,9 @@
                 android:color="@android:color/white"
                 android:width="1.5dp" />
             <solid
-                android:color="@android:color/transparent" />
+                android:color="@android:color/black" />
             <padding
-                android:bottom="10dp"
+                android:bottom="1dp"
                 android:left="10dp"
                 android:right="10dp"
                 android:top="10dp" />

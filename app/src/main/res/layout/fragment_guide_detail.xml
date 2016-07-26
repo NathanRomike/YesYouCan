@@ -19,7 +19,7 @@
             <ImageView
                 android:id="@+id/coverImageView"
                 android:transitionName="coverImage"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:src="@drawable/robologo"
                 android:layout_below="@+id/titleTextView"
@@ -29,10 +29,9 @@
                 android:id="@+id/introTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="15sp"
                 android:layout_below="@+id/coverImageView"
-                android:textAlignment="center"
-                android:text="I'm the intro of this guide!" />
+                android:textAlignment="center"/>
 
             <ListView
                 android:layout_width="match_parent"
