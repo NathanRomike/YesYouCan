@@ -16,9 +16,9 @@
 
         <ImageView
             android:id="@+id/coverImageView"
+            android:transitionName="coverImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:transitionName="coverImage"
             android:src="@drawable/robologo"
             android:scaleType="centerCrop"
             android:layout_alignParentTop="true"

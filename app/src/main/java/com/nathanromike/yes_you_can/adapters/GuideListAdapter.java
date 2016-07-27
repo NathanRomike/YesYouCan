@@ -1,7 +1,6 @@
 package com.nathanromike.yes_you_can.adapters;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -82,7 +81,9 @@ public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.Guid
             intent.putExtra("position", itemPosition);
             intent.putExtra("guides", Parcels.wrap(mGuides));
 
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(mActivity, mCoverImageView, "coverImage");
+//          Shared element transition bundle
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(mActivity, mCoverImageView, "coverImage");
+
             mContext.startActivity(intent, options.toBundle());
         }
     }

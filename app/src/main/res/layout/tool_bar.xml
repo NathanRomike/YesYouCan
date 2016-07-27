@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:elevation="4dp"
+    android:theme="@style/ToolbarColoredBackArrow"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" >
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/robologo"
+        android:layout_gravity="center" />
+
+</android.support.v7.widget.Toolbar>

@@ -6,8 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.GuideListsActivity">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/sliding_tabs"
+        android:layout_below="@id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/black"
