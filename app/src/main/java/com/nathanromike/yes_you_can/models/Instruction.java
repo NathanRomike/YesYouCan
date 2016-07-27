@@ -31,6 +31,10 @@ public class Instruction {
     }
 
     public int getStepCount() {
-        return mStepsImg.size();
+        if (mStepsImg.size() < mStepsText.size()) {
+            return mStepsImg.size();
+        } else {
+            return mStepsText.size();
+        }
     }
 }

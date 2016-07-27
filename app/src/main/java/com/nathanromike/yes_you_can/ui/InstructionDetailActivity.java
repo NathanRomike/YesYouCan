@@ -22,7 +22,7 @@ public class InstructionDetailActivity extends AppCompatActivity {
     ArrayList<Guide> mGuides = new ArrayList<>();
 
     @BindView(R.id.viewPager) ViewPager mViewPager;
-    @BindView(R.id.tool_bar) Toolbar toolbar;
+//    @BindView(R.id.tool_bar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,11 @@ public class InstructionDetailActivity extends AppCompatActivity {
         mGuides = Parcels.unwrap(getIntent().getParcelableExtra("guides"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
-        setSupportActionBar(toolbar);
-        ActionBar ab = getSupportActionBar();
-        if (ab != null) {
-            ab.setDisplayShowTitleEnabled(false);
-        }
+//        setSupportActionBar(toolbar);
+//        ActionBar ab = getSupportActionBar();
+//        if (ab != null) {
+//            ab.setDisplayShowTitleEnabled(false);
+//        }
 
         mGuidePagerAdapter = new GuidePagerAdapter(getSupportFragmentManager(), mGuides);
         mViewPager.setAdapter(mGuidePagerAdapter);

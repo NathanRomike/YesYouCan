@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.InstructionDetailActivity">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar" />
+    <!--<include-->
+        <!--android:id="@+id/tool_bar"-->
+        <!--layout="@layout/tool_bar" />-->
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"

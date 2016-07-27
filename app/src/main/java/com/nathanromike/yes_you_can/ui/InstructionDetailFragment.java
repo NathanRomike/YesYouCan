@@ -83,6 +83,7 @@ public class InstructionDetailFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        mIntroTextView.setText(mInstruction.getIntroduction());
                         mAdapter = new InstructionStepAdapter(getContext(), mInstruction);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
