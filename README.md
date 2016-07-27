@@ -17,7 +17,7 @@ You will need the following things properly installed on your computer.
 ## Installation and Running
 
 * `git clone <https://github.com/nathanromike/yesyoucan>`
-* Run project on device or emulator with Shift + F10
+* Run project on device or emulator with Ctrl + R
 
 ## Technologies Used
 
