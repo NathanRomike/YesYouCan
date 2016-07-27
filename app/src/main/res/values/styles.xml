@@ -8,15 +8,6 @@
         <!-- enable window content transitions -->
         <item name="android:windowContentTransitions">true</item>
 
-        <!-- specify enter and exit transitions -->
-        <item name="android:windowEnterTransition">@transition/change_image_transform</item>
-        <item name="android:windowExitTransition">@transition/change_image_transform</item>
-
-        <!-- specify shared element transitions -->
-        <item name="android:windowSharedElementEnterTransition">
-            @transition/change_image_transform</item>
-        <item name="android:windowSharedElementExitTransition">
-            @transition/change_image_transform</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
