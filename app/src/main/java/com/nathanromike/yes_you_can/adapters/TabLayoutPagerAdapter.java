@@ -5,14 +5,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.nathanromike.yes_you_can.ui.GuideListFragment;
+import com.nathanromike.yes_you_can.ui.CardListFragment;
 
-public class GuideListPagerAdapter extends FragmentPagerAdapter {
+public class TabLayoutPagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 4;
     private String tabTitles[] = new String[] {"Electronics", "Sewing", "Software", "Soldering"};
     private Context mContext;
 
-    public GuideListPagerAdapter(FragmentManager fm, Context context) {
+    public TabLayoutPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.mContext = context;
     }
@@ -20,7 +20,7 @@ public class GuideListPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return GuideListFragment.newInstance(position + 1);
+        return CardListFragment.newInstance(position + 1);
     }
 
     @Override

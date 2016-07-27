@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.nathanromike.yes_you_can.models.Guide;
-import com.nathanromike.yes_you_can.ui.GuideDetailFragment;
+import com.nathanromike.yes_you_can.ui.InstructionDetailFragment;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class GuidePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return GuideDetailFragment.newInstance(mGuides.get(position));
+        return InstructionDetailFragment.newInstance(mGuides.get(position));
     }
 
     @Override

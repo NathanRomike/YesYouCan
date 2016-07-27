@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context="com.nathanromike.yes_you_can.ui.GuideListFragment">
+    tools:context=".ui.CardListFragment">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

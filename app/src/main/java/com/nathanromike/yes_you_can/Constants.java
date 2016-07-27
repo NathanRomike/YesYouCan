@@ -5,7 +5,7 @@ public class Constants {
     public static final String NO_DETAIL_TAG = "No details needed!";
     public static final String NO_CATEGORY_TAG = "No category needed!";
 
-//    Category parameters:
+//    Category API parameters:
     public static final String ELECTRONIC = "electronics+skills";
     public static final String SOLDERING = "soldering";
     public static final String SOFTWARE = "software";

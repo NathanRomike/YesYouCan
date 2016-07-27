@@ -20,11 +20,11 @@
         </activity>
         <activity android:name=".ui.MainActivity"/>
         <activity
-            android:name=".ui.GuideListsActivity"
+            android:name=".ui.CardListsActivity"
             android:parentActivityName=".ui.MainActivity"/>
         <activity
-            android:name=".ui.GuideDetailActivity"
-            android:parentActivityName=".ui.GuideListsActivity"/>
+            android:name=".ui.InstructionDetailActivity"
+            android:parentActivityName=".ui.CardListsActivity"/>
     </application>
 
 </manifest>

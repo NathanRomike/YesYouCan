@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.nathanromike.yes_you_can.R;
 import com.nathanromike.yes_you_can.models.Guide;
-import com.nathanromike.yes_you_can.ui.GuideDetailActivity;
+import com.nathanromike.yes_you_can.ui.InstructionDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -23,18 +23,18 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.GuideViewHolder> {
+public class MainListRecyclerAdapter extends RecyclerView.Adapter<MainListRecyclerAdapter.GuideViewHolder> {
     private ArrayList<Guide> mGuides = new ArrayList<>();
     private Activity mActivity;
 
-    public GuideListAdapter(Activity activity, ArrayList<Guide> guides) {
+    public MainListRecyclerAdapter(Activity activity, ArrayList<Guide> guides) {
         this.mActivity = activity;
         this.mGuides = guides;
     }
 
     @Override
     public GuideViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.guide_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_list_item, parent, false);
         return new GuideViewHolder(view);
     }
 
@@ -77,7 +77,7 @@ public class GuideListAdapter extends RecyclerView.Adapter<GuideListAdapter.Guid
         @Override
         public void onClick(View view) {
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, GuideDetailActivity.class);
+            Intent intent = new Intent(mContext, InstructionDetailActivity.class);
             intent.putExtra("position", itemPosition);
             intent.putExtra("guides", Parcels.wrap(mGuides));
 

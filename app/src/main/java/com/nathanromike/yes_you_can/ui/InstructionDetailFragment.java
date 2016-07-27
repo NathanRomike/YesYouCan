@@ -28,19 +28,19 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class GuideDetailFragment extends Fragment {
+public class InstructionDetailFragment extends Fragment {
     @BindView(R.id.titleTextView) TextView mTitleTextView;
     @BindView(R.id.coverImageView) ImageView mCoverImageView;
     @BindView(R.id.introTextView) TextView mIntroTextView;
     @BindView(R.id.listView) ListView mListView;
 
-    public GuideDetailFragment() {}
+    public InstructionDetailFragment() {}
 
     private Guide mGuide;
     private Instruction mInstruction;
 
-    public static GuideDetailFragment newInstance(Guide guide) {
-        GuideDetailFragment guideDetailFragment = new GuideDetailFragment();
+    public static InstructionDetailFragment newInstance(Guide guide) {
+        InstructionDetailFragment guideDetailFragment = new InstructionDetailFragment();
         Bundle args = new Bundle();
         args.putParcelable("guide", Parcels.wrap(guide));
         guideDetailFragment.setArguments(args);
@@ -56,7 +56,7 @@ public class GuideDetailFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_guide_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_instruction_detail, container, false);
         ButterKnife.bind(this, view);
         mTitleTextView.setText(mGuide.getTitle());
         Picasso.with(view.getContext())

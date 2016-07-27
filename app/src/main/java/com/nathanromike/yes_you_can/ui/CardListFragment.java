@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.nathanromike.yes_you_can.Constants;
 import com.nathanromike.yes_you_can.R;
-import com.nathanromike.yes_you_can.adapters.GuideListAdapter;
+import com.nathanromike.yes_you_can.adapters.MainListRecyclerAdapter;
 import com.nathanromike.yes_you_can.models.Guide;
 import com.nathanromike.yes_you_can.services.iFixItService;
 
@@ -23,22 +23,22 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class GuideListFragment extends Fragment {
+public class CardListFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     public int mPage;
     public String mCategory;
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    private GuideListAdapter mAdapter;
+    private MainListRecyclerAdapter mAdapter;
 
     public ArrayList<Guide> mGuides = new ArrayList<>();
 
-    public GuideListFragment() {}
+    public CardListFragment() {}
 
-    public static GuideListFragment newInstance(int page) {
+    public static CardListFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
-        GuideListFragment fragment = new GuideListFragment();
+        CardListFragment fragment = new CardListFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,7 +51,7 @@ public class GuideListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_guide_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_card_list, container, false);
         ButterKnife.bind(this, view);
         getGuides(mPage);
         return view;
@@ -88,7 +88,7 @@ public class GuideListFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mAdapter = new GuideListAdapter(getActivity(), mGuides);
+                            mAdapter = new MainListRecyclerAdapter(getActivity(), mGuides);
                             mRecyclerView.setAdapter(mAdapter);
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                             mRecyclerView.setLayoutManager(layoutManager);

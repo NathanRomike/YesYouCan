@@ -6,15 +6,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 
 import com.nathanromike.yes_you_can.R;
-import com.nathanromike.yes_you_can.adapters.GuideListPagerAdapter;
+import com.nathanromike.yes_you_can.adapters.TabLayoutPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GuideListsActivity extends AppCompatActivity {
+public class CardListsActivity extends AppCompatActivity {
     @BindView(R.id.listViewpager) ViewPager viewPager;
     @BindView(R.id.sliding_tabs) TabLayout tabLayout;
     @BindView(R.id.tool_bar) Toolbar toolbar;
@@ -22,7 +21,7 @@ public class GuideListsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide_list);
+        setContentView(R.layout.activity_card_lists);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -30,7 +29,7 @@ public class GuideListsActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowTitleEnabled(false);
 
-        viewPager.setAdapter(new GuideListPagerAdapter(getSupportFragmentManager(), GuideListsActivity.this));
+        viewPager.setAdapter(new TabLayoutPagerAdapter(getSupportFragmentManager(), CardListsActivity.this));
         viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
     }

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GuideDetailActivity extends AppCompatActivity {
+public class InstructionDetailActivity extends AppCompatActivity {
 
     GuidePagerAdapter mGuidePagerAdapter;
     ArrayList<Guide> mGuides = new ArrayList<>();
@@ -28,7 +28,7 @@ public class GuideDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide_detail);
+        setContentView(R.layout.activity_instruction_detail);
         supportPostponeEnterTransition();
         ButterKnife.bind(this);
 
