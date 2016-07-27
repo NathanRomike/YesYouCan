@@ -1,6 +1,5 @@
 package com.nathanromike.yes_you_can.services;
 
-import android.util.Log;
 
 import com.nathanromike.yes_you_can.Constants;
 import com.nathanromike.yes_you_can.models.Guide;
@@ -12,6 +11,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -26,11 +26,11 @@ public class iFixItService {
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.IFIXIT_BASE_URL).newBuilder();
 
-//      Pull list of guides by category
+        //Pull list of guides by category
         if (guideId.equals(Constants.NO_DETAIL_TAG)) {
             urlBuilder.addPathSegment("categories");
             urlBuilder.addPathSegment(category);
-//      Pulls details for specific guide
+        //Pulls details for a specific guide (Instruction model)
         } else {
             urlBuilder.addPathSegment("guides");
             urlBuilder.addPathSegment(guideId);
@@ -76,46 +76,35 @@ public class iFixItService {
 
     public Instruction processInstructionResults(Response response) {
         Instruction instruction = new Instruction();
+        ArrayList<String> stepsText = new ArrayList<>();
+        ArrayList<String> stepsImg = new ArrayList<>();
+
         try {
             String jsonData = response.body().string();
 
             if (response.isSuccessful()) {
-
                 JSONObject fixItJSON = new JSONObject(jsonData);
                 String introduction = fixItJSON.getString("introduction_raw");
 
-                ArrayList<String> steps = new ArrayList<>();
                 JSONArray stepsArray = fixItJSON.getJSONArray("steps");
                 for (int i = 0; i < stepsArray.length(); i++) {
+
                     JSONObject stepObject = stepsArray.getJSONObject(i);
                     JSONArray linesArray = stepObject.getJSONArray("lines");
                     for (int j = 0; j < linesArray.length(); j++) {
                         JSONObject lineObject = linesArray.getJSONObject(j);
-                        String lineText = lineObject.getString("text_raw");
-                        steps.add(lineText);
+                        stepsText.add(lineObject.getString("text_raw"));
                     }
 
                     JSONObject mediaObject = stepObject.getJSONObject("media");
                     JSONArray dataArray = mediaObject.getJSONArray("data");
                     for (int k = 0; k < dataArray.length(); k++) {
                         JSONObject dataObject = dataArray.getJSONObject(k);
-                        String stepImgUrl = dataObject.getString("standard");
+                        stepsImg.add(dataObject.getString("standard"));
                     }
                 }
-                String timeRequired = fixItJSON.getString("time_required");
 
-                ArrayList<String> tools = new ArrayList<>();
-                JSONArray toolsArray = fixItJSON.getJSONArray("tools");
-                for (int l = 0; l < toolsArray.length(); l++) {
-                    JSONObject toolObject = toolsArray.getJSONObject(l);
-                    String toolName = toolObject.getString("text");
-                    tools.add(toolName);
-                }
-
-                JSONObject authorObject = fixItJSON.getJSONObject("author");
-                String authorName = authorObject.getString("username");
-
-                instruction = new Instruction(introduction, steps, timeRequired, tools, authorName);
+                instruction = new Instruction(introduction, stepsText, stepsImg);
 
             }
         } catch (IOException | JSONException e) {

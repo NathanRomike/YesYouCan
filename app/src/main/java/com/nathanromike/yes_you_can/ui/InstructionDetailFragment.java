@@ -2,16 +2,18 @@ package com.nathanromike.yes_you_can.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.nathanromike.yes_you_can.Constants;
 import com.nathanromike.yes_you_can.R;
+import com.nathanromike.yes_you_can.adapters.InstructionStepAdapter;
 import com.nathanromike.yes_you_can.models.Guide;
 import com.nathanromike.yes_you_can.models.Instruction;
 import com.nathanromike.yes_you_can.services.iFixItService;
@@ -31,12 +33,13 @@ public class InstructionDetailFragment extends Fragment {
     @BindView(R.id.titleTextView) TextView mTitleTextView;
     @BindView(R.id.coverImageView) ImageView mCoverImageView;
     @BindView(R.id.introTextView) TextView mIntroTextView;
-    @BindView(R.id.listView) ListView mListView;
-
-    public InstructionDetailFragment() {}
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
 
     private Guide mGuide;
     private Instruction mInstruction;
+    private InstructionStepAdapter mAdapter;
+
+    public InstructionDetailFragment() {}
 
     public static InstructionDetailFragment newInstance(Guide guide) {
         InstructionDetailFragment guideDetailFragment = new InstructionDetailFragment();
@@ -80,10 +83,11 @@ public class InstructionDetailFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mIntroTextView.setText(mInstruction.getIntroduction());
-
-                        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, mInstruction.getSteps());
-                        mListView.setAdapter(adapter);
+                        mAdapter = new InstructionStepAdapter(getContext(), mInstruction);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }
