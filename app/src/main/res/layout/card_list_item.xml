@@ -11,8 +11,8 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:elevation="1dp">
+        android:background="@drawable/card_state_list"
+        android:elevation="3dp">
 
         <ImageView
             android:id="@+id/coverImageView"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="This is where the guide's title goes!"
+                android:text="@string/place_holder"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary" />
 
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="This is where a short summary goes! It's not too long!"
+                android:text="@string/place_holder_long"
                 android:textAlignment="center"
                 android:maxLines="2"/>
 
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Difficulty"
+                android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"/>
 

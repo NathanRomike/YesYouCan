@@ -62,7 +62,7 @@ public class iFixItService {
                     String difficulty = guideJSON.getString("difficulty");
                     double duration = guideJSON.getDouble("time_required_max");
                     JSONObject imagesJSON = guideJSON.getJSONObject("image");
-                    String coverImg = imagesJSON.getString("standard");
+                    String coverImg = imagesJSON.getString("medium");
 
                     Guide guide = new Guide(guideId, url, title, summary, difficulty, duration, coverImg);
                     guides.add(guide);

@@ -18,7 +18,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class InstructionDetailActivity extends AppCompatActivity {
-
     GuidePagerAdapter mGuidePagerAdapter;
     ArrayList<Guide> mGuides = new ArrayList<>();
 
@@ -29,7 +28,6 @@ public class InstructionDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instruction_detail);
-        supportPostponeEnterTransition();
         ButterKnife.bind(this);
 
         mGuides = Parcels.unwrap(getIntent().getParcelableExtra("guides"));
@@ -37,8 +35,9 @@ public class InstructionDetailActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setDisplayShowTitleEnabled(false);
+        if (ab != null) {
+            ab.setDisplayShowTitleEnabled(false);
+        }
 
         mGuidePagerAdapter = new GuidePagerAdapter(getSupportFragmentManager(), mGuides);
         mViewPager.setAdapter(mGuidePagerAdapter);

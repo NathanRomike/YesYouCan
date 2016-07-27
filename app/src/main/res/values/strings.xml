@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Yes You Can</string>
+    <string name="question">Can You Fix It?</string>
+    <string name="answer">YES YOU CAN!</string>
     <string name="shared_transition">shared transition</string>
+    <string name="place_holder">This is a placeholder!</string>
+    <string name="place_holder_long">This is a much longer placeholder! Maybe this is a summary, or some other short narrative!?</string>
 </resources>

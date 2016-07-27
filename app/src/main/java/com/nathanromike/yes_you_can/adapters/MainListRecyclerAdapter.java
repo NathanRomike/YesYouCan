@@ -81,7 +81,7 @@ public class MainListRecyclerAdapter extends RecyclerView.Adapter<MainListRecycl
             intent.putExtra("position", itemPosition);
             intent.putExtra("guides", Parcels.wrap(mGuides));
 
-//          Shared element transition bundle
+            //Shared element transition bundle
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(mActivity, mCoverImageView, "coverImage");
 
             mContext.startActivity(intent, options.toBundle());

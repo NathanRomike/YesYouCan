@@ -26,8 +26,10 @@ public class CardListsActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setDisplayShowTitleEnabled(false);
+        if (ab != null) {
+            ab.setDisplayShowTitleEnabled(false);
+            ab.setDisplayHomeAsUpEnabled(true);
+        }
 
         viewPager.setAdapter(new TabLayoutPagerAdapter(getSupportFragmentManager(), CardListsActivity.this));
         viewPager.setOffscreenPageLimit(3);

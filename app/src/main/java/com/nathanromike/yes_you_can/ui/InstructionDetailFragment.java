@@ -1,6 +1,5 @@
 package com.nathanromike.yes_you_can.ui;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -62,8 +61,6 @@ public class InstructionDetailFragment extends Fragment {
         Picasso.with(view.getContext())
                 .load(mGuide.getCoverImg())
                 .into(mCoverImageView);
-
-        getActivity().startPostponedEnterTransition();
         return view;
     }
 
@@ -89,9 +86,7 @@ public class InstructionDetailFragment extends Fragment {
                         mListView.setAdapter(adapter);
                     }
                 });
-
             }
         });
     }
-
 }
