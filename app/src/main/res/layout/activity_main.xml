@@ -5,28 +5,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.MainActivity"
+    android:background="@android:color/black"
     android:clipToPadding="false">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/wearables"
+        android:src="@drawable/main_background"
         android:scaleType="centerCrop"
-        android:id="@+id/backgroundImageView"
-        android:alpha=".9"
-        android:layout_alignParentBottom="true" />
+        android:id="@+id/backgroundImageView" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/question"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="@dimen/abc_text_size_display_2_material"
         android:textStyle="normal"
-        android:layout_marginTop="249dp"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -40,6 +38,7 @@
         android:fontFamily="sans-serif-condensed"
         android:background="@drawable/button_state_list"
         android:layout_below="@+id/titleTextView"
+        android:layout_centerHorizontal="true"
         android:layout_alignEnd="@+id/titleTextView"
         android:layout_alignStart="@+id/titleTextView"
         />
