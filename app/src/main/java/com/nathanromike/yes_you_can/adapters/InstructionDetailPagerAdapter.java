@@ -9,10 +9,10 @@ import com.nathanromike.yes_you_can.ui.InstructionDetailFragment;
 
 import java.util.ArrayList;
 
-public class GuidePagerAdapter extends FragmentPagerAdapter {
+public class InstructionDetailPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Guide> mGuides;
 
-    public GuidePagerAdapter(FragmentManager fm, ArrayList<Guide> guides) {
+    public InstructionDetailPagerAdapter(FragmentManager fm, ArrayList<Guide> guides) {
         super(fm);
         mGuides = guides;
     }

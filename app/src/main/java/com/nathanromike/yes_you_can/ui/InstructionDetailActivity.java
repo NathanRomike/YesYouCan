@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.nathanromike.yes_you_can.R;
-import com.nathanromike.yes_you_can.adapters.GuidePagerAdapter;
+import com.nathanromike.yes_you_can.adapters.InstructionDetailPagerAdapter;
 import com.nathanromike.yes_you_can.models.Guide;
 
 import org.parceler.Parcels;
@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class InstructionDetailActivity extends AppCompatActivity {
-    GuidePagerAdapter mGuidePagerAdapter;
+    InstructionDetailPagerAdapter mGuidePagerAdapter;
     ArrayList<Guide> mGuides = new ArrayList<>();
 
     @BindView(R.id.viewPager) ViewPager mViewPager;
@@ -30,7 +30,7 @@ public class InstructionDetailActivity extends AppCompatActivity {
         mGuides = Parcels.unwrap(getIntent().getParcelableExtra("guides"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
-        mGuidePagerAdapter = new GuidePagerAdapter(getSupportFragmentManager(), mGuides);
+        mGuidePagerAdapter = new InstructionDetailPagerAdapter(getSupportFragmentManager(), mGuides);
         mViewPager.setAdapter(mGuidePagerAdapter);
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setCurrentItem(startingPosition);
