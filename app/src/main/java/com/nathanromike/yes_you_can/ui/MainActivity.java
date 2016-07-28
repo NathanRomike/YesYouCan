@@ -41,6 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isInternetAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return  networkInfo != null && networkInfo.isConnectedOrConnecting();
+        return  networkInfo != null && networkInfo.isConnected();
     }
 }

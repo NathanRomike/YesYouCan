@@ -1,10 +1,12 @@
 package com.nathanromike.yes_you_can.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,10 +33,10 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class InstructionDetailFragment extends Fragment {
-    @BindView(R.id.titleTextView) TextView mTitleTextView;
     @BindView(R.id.coverImageView) ImageView mCoverImageView;
     @BindView(R.id.introTextView) TextView mIntroTextView;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
 
     private Guide mGuide;
     private Instruction mInstruction;
@@ -61,10 +63,14 @@ public class InstructionDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_instruction_detail, container, false);
         ButterKnife.bind(this, view);
-        mTitleTextView.setText(mGuide.getTitle());
         Picasso.with(view.getContext())
                 .load(mGuide.getCoverImg())
                 .into(mCoverImageView);
+
+        if (mToolbar != null) {
+            mToolbar.setTitle(mGuide.getTitle());
+        }
+
         return view;
     }
 

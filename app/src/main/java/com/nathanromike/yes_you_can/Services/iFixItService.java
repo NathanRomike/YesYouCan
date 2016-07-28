@@ -11,7 +11,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -103,9 +102,7 @@ public class iFixItService {
                         stepsImg.add(dataObject.getString("standard"));
                     }
                 }
-
                 instruction = new Instruction(introduction, stepsText, stepsImg);
-
             }
         } catch (IOException | JSONException e) {
             e.printStackTrace();
