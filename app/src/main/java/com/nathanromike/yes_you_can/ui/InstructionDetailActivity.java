@@ -32,7 +32,7 @@ public class InstructionDetailActivity extends AppCompatActivity {
 
         mGuidePagerAdapter = new GuidePagerAdapter(getSupportFragmentManager(), mGuides);
         mViewPager.setAdapter(mGuidePagerAdapter);
-        mViewPager.setOffscreenPageLimit(10);
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setCurrentItem(startingPosition);
     }
 }
