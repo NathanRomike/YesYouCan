@@ -84,7 +84,7 @@ public class iFixItService {
 
             if (response.isSuccessful()) {
                 JSONObject fixItJSON = new JSONObject(jsonData);
-                String introduction = fixItJSON.getString("introduction_raw");
+                String introduction = fixItJSON.getString("introduction_rendered");
 
                 JSONArray stepsArray = fixItJSON.getJSONArray("steps");
                 for (int i = 0; i < stepsArray.length(); i++) {
@@ -93,7 +93,7 @@ public class iFixItService {
                     JSONArray linesArray = stepObject.getJSONArray("lines");
                     for (int j = 0; j < linesArray.length(); j++) {
                         JSONObject lineObject = linesArray.getJSONObject(j);
-                        stepsText.add(lineObject.getString("text_raw"));
+                        stepsText.add(lineObject.getString("text_rendered"));
                     }
 
                     JSONObject mediaObject = stepObject.getJSONObject("media");
