@@ -1,7 +1,5 @@
 package com.nathanromike.yes_you_can.models;
 
-import android.util.Log;
-
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
@@ -21,8 +19,6 @@ public class Instruction {
     }
 
     public String getIntroduction() {
-        // API includes links like: [product|IF145-035|multimeter]
-        // Regex to pull between first [product| to the second pipe = /\[(.*)\|/
         return mIntroduction;
     }
 

@@ -5,31 +5,23 @@ import org.parceler.Parcel;
 @Parcel
 public class Guide {
     private String mGuideId;
-    private String mUrl;
     private String mTitle;
     private String mSummary;
     private String mDifficulty;
-    private double mDuration;
     private String mCoverImg;
 
     public Guide() {}
 
-    public Guide(String guideId, String url, String title, String summary, String difficulty, double duration, String coverImg) {
+    public Guide(String guideId, String title, String summary, String difficulty, String coverImg) {
         this.mGuideId = guideId;
-        this.mUrl = url;
         this.mTitle = title;
         this.mSummary = summary;
         this.mDifficulty = difficulty;
-        this.mDuration = duration;
         this.mCoverImg = coverImg;
     }
 
     public String getGuideId() {
         return mGuideId;
-    }
-
-    public String getUrl() {
-        return mUrl;
     }
 
     public String getTitle() {
@@ -42,10 +34,6 @@ public class Guide {
 
     public String getDifficulty() {
         return mDifficulty;
-    }
-
-    public double getDuration() {
-        return mDuration;
     }
 
     public String getCoverImg() {

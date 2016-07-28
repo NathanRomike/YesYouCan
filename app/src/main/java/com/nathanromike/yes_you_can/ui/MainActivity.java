@@ -14,8 +14,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.nathanromike.yes_you_can.R;
 
-import java.net.InetAddress;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.button) Button button;
 

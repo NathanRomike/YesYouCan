@@ -51,19 +51,18 @@ public class iFixItService {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 JSONObject fixItJSON = new JSONObject(jsonData);
+
                 JSONArray guidesJSON = fixItJSON.getJSONArray("guides");
                 for (int i = 0; i < guidesJSON.length(); i++) {
                     JSONObject guideJSON = guidesJSON.getJSONObject(i);
                     String guideId = guideJSON.getString("guideid");
-                    String url = guideJSON.getString("url");
                     String title = guideJSON.getString("title");
                     String summary = guideJSON.getString("summary");
                     String difficulty = guideJSON.getString("difficulty");
-                    double duration = guideJSON.getDouble("time_required_max");
                     JSONObject imagesJSON = guideJSON.getJSONObject("image");
                     String coverImg = imagesJSON.getString("medium");
 
-                    Guide guide = new Guide(guideId, url, title, summary, difficulty, duration, coverImg);
+                    Guide guide = new Guide(guideId, title, summary, difficulty, coverImg);
                     guides.add(guide);
                 }
             }

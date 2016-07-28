@@ -1,10 +1,8 @@
 package com.nathanromike.yes_you_can.ui;
 
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
 import com.nathanromike.yes_you_can.R;
 import com.nathanromike.yes_you_can.adapters.GuidePagerAdapter;
@@ -22,7 +20,6 @@ public class InstructionDetailActivity extends AppCompatActivity {
     ArrayList<Guide> mGuides = new ArrayList<>();
 
     @BindView(R.id.viewPager) ViewPager mViewPager;
-//    @BindView(R.id.tool_bar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +30,9 @@ public class InstructionDetailActivity extends AppCompatActivity {
         mGuides = Parcels.unwrap(getIntent().getParcelableExtra("guides"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
-//        setSupportActionBar(toolbar);
-//        ActionBar ab = getSupportActionBar();
-//        if (ab != null) {
-//            ab.setDisplayShowTitleEnabled(false);
-//        }
-
         mGuidePagerAdapter = new GuidePagerAdapter(getSupportFragmentManager(), mGuides);
         mViewPager.setAdapter(mGuidePagerAdapter);
+        mViewPager.setOffscreenPageLimit(10);
         mViewPager.setCurrentItem(startingPosition);
     }
 }

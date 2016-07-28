@@ -14,9 +14,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CardListsActivity extends AppCompatActivity {
-    @BindView(R.id.listViewpager) ViewPager viewPager;
-    @BindView(R.id.sliding_tabs) TabLayout tabLayout;
-    @BindView(R.id.tool_bar) Toolbar toolbar;
+    @BindView(R.id.listViewpager) ViewPager mViewPager;
+    @BindView(R.id.sliding_tabs) TabLayout mTabLayout;
+    @BindView(R.id.tool_bar) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +24,15 @@ public class CardListsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_card_lists);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
             ab.setDisplayShowTitleEnabled(false);
             ab.setDisplayHomeAsUpEnabled(true);
         }
 
-        viewPager.setAdapter(new TabLayoutPagerAdapter(getSupportFragmentManager(), CardListsActivity.this));
-        viewPager.setOffscreenPageLimit(3);
-        tabLayout.setupWithViewPager(viewPager);
+        mViewPager.setAdapter(new TabLayoutPagerAdapter(getSupportFragmentManager(), CardListsActivity.this));
+        mViewPager.setOffscreenPageLimit(3);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 }
