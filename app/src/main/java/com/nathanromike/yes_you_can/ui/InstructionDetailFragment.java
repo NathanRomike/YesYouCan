@@ -84,18 +84,12 @@ public class InstructionDetailFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 mInstruction = fixItService.processInstructionResults(response);
-
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mIntroTextView.setText(Html.fromHtml(mInstruction.getIntroduction()));
-                        mAdapter = new InstructionStepAdapter(getContext(), mInstruction);
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
-                    }
-                });
+                mIntroTextView.setText(Html.fromHtml(mInstruction.getIntroduction()));
+                mAdapter = new InstructionStepAdapter(getContext(), mInstruction);
+                mRecyclerView.setAdapter(mAdapter);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                mRecyclerView.setLayoutManager(layoutManager);
+                mRecyclerView.setHasFixedSize(true);
             }
         });
     }
