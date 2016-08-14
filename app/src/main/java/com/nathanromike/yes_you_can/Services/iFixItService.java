@@ -52,15 +52,15 @@ public class iFixItService {
             if (response.isSuccessful()) {
                 JSONObject fixItJSON = new JSONObject(jsonData);
 
-                JSONArray guidesJSON = fixItJSON.getJSONArray("guides");
+                JSONArray guidesJSON = fixItJSON.optJSONArray("guides");
                 for (int i = 0; i < guidesJSON.length(); i++) {
-                    JSONObject guideJSON = guidesJSON.getJSONObject(i);
-                    String guideId = guideJSON.getString("guideid");
-                    String title = guideJSON.getString("title");
-                    String summary = guideJSON.getString("summary");
-                    String difficulty = guideJSON.getString("difficulty");
-                    JSONObject imagesJSON = guideJSON.getJSONObject("image");
-                    String coverImg = imagesJSON.getString("medium");
+                    JSONObject guideJSON = guidesJSON.optJSONObject(i);
+                    String guideId = guideJSON.optString("guideid");
+                    String title = guideJSON.optString("title");
+                    String summary = guideJSON.optString("summary");
+                    String difficulty = guideJSON.optString("difficulty");
+                    JSONObject imagesJSON = guideJSON.optJSONObject("image");
+                    String coverImg = imagesJSON.optString("medium");
 
                     Guide guide = new Guide(guideId, title, summary, difficulty, coverImg);
                     guides.add(guide);
@@ -82,23 +82,23 @@ public class iFixItService {
 
             if (response.isSuccessful()) {
                 JSONObject fixItJSON = new JSONObject(jsonData);
-                String introduction = fixItJSON.getString("introduction_rendered");
+                String introduction = fixItJSON.optString("introduction_rendered");
 
                 JSONArray stepsArray = fixItJSON.getJSONArray("steps");
                 for (int i = 0; i < stepsArray.length(); i++) {
 
-                    JSONObject stepObject = stepsArray.getJSONObject(i);
+                    JSONObject stepObject = stepsArray.optJSONObject(i);
                     JSONArray linesArray = stepObject.getJSONArray("lines");
                     for (int j = 0; j < linesArray.length(); j++) {
-                        JSONObject lineObject = linesArray.getJSONObject(j);
-                        stepsText.add(lineObject.getString("text_rendered"));
+                        JSONObject lineObject = linesArray.optJSONObject(j);
+                        stepsText.add(lineObject.optString("text_rendered"));
                     }
 
-                    JSONObject mediaObject = stepObject.getJSONObject("media");
+                    JSONObject mediaObject = stepObject.optJSONObject("media");
                     JSONArray dataArray = mediaObject.getJSONArray("data");
                     for (int k = 0; k < dataArray.length(); k++) {
-                        JSONObject dataObject = dataArray.getJSONObject(k);
-                        stepsImg.add(dataObject.getString("standard"));
+                        JSONObject dataObject = dataArray.optJSONObject(k);
+                        stepsImg.add(dataObject.optString("standard"));
                     }
                 }
                 instruction = new Instruction(introduction, stepsText, stepsImg);
