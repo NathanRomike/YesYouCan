@@ -84,11 +84,17 @@ public class CardListFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     mGuides = fixItService.processGuideResults(response);
-                    mAdapter = new MainListRecyclerAdapter(getActivity(), mGuides);
-                    mRecyclerView.setAdapter(mAdapter);
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-                    mRecyclerView.setLayoutManager(layoutManager);
-                    mRecyclerView.setHasFixedSize(true);
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter = new MainListRecyclerAdapter(getActivity(), mGuides);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
+                        }
+                    });
                 }
             }
         });
