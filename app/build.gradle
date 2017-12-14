@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
+apply plugin: 'newrelic'
 
 android {
     compileSdkVersion 23
@@ -11,6 +12,11 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'NEW_RELIC_APP_TOKEN', NewRelicAppToken
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -34,4 +40,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.4.0'
     compile 'org.parceler:parceler-api:1.1.5'
     compile 'com.android.support:design:23.4.0'
+    compile 'com.newrelic.agent.android:android-agent:5.+'
 }

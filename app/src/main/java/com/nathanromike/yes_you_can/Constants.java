@@ -10,4 +10,7 @@ public class Constants {
     public static final String SOLDERING = "soldering";
     public static final String SOFTWARE = "software";
     public static final String SEWING = "basic+sewing";
+
+//    NewRelic:
+    public static final String NEW_RELIC_APP_TOKEN = BuildConfig.NEW_RELIC_APP_TOKEN;
 }
