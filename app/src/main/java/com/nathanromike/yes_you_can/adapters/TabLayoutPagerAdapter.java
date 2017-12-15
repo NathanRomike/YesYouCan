@@ -9,7 +9,7 @@ import com.nathanromike.yes_you_can.ui.CardListFragment;
 
 public class TabLayoutPagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 4;
-    private String tabTitles[] = new String[] {"Electronics", "Sewing", "Software", "Soldering"};
+    private String tabTitles[] = new String[] {"Tech", "Sewing", "Software", "Soldering"};
     private Context mContext;
 
     public TabLayoutPagerAdapter(FragmentManager fm, Context context) {
