@@ -4,6 +4,7 @@ package com.nathanromike.yes_you_can.services;
 import com.nathanromike.yes_you_can.Constants;
 import com.nathanromike.yes_you_can.models.Guide;
 import com.nathanromike.yes_you_can.models.Instruction;
+import com.newrelic.agent.android.instrumentation.SkipTrace;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +46,7 @@ public class iFixItService {
         call.enqueue(callback);
     }
 
+    @SkipTrace
     public ArrayList<Guide> processGuideResults(Response response) {
         ArrayList<Guide> guides = new ArrayList<>();
         try {
@@ -72,6 +74,7 @@ public class iFixItService {
         return guides;
     }
 
+    @SkipTrace
     public Instruction processInstructionResults(Response response) {
         Instruction instruction = new Instruction();
         ArrayList<String> stepsText = new ArrayList<>();
